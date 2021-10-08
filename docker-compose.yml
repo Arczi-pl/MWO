@@ -14,7 +14,23 @@ services:
       FLASK_APP: ./app.py
     ports: ['5000:5000']
     volumes: ['./backend:/app']
-
+    depends_on:
+      - mongo
+    networks:
+      - backend
+  
+  mongo:
+    image: mongo:4.0.8
+    container_name: mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    networks:
+      - backend
+    volumes:
+      - ./mongo:/docker-entrypoint-initdb.d
+  
   frontend:
     build: ./frontend
     container_name: frontend
@@ -22,3 +38,7 @@ services:
     volumes: ['./frontend:/frontend']
     ports:
       - "3000:3000"
+
+networks:
+  backend:
+    driver: bridge
