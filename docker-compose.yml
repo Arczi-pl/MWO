@@ -1,12 +1,17 @@
-version: '3.1'
+version: '3.8'
 
 services:
-
   backend:
-    build: ./backend/
-    restart: always
-    ports:
-      - 5000:5000
+    build: ./backend
+    entrypoint:
+      - flask
+      - run
+      - --host=0.0.0.0
+    environment:
+      FLASK_DEBUG: 1
+      FLASK_APP: ./app.py
+    ports: ['5000:5000']
+    volumes: ['./backend:/app']
 
   frontend:
     build: ./frontend

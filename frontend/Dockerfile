@@ -5,7 +5,7 @@ RUN yarn build
 
 FROM node:lts as runner
 WORKDIR /frontend
-ENV NODE_ENV production
+ENV NODE_ENV development
 # If you are using a custom next.config.js file, uncomment this line.
 # COPY --from=builder /frontend/next.config.js ./
 COPY --from=builder /frontend/public ./public
