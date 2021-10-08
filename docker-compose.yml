@@ -3,6 +3,8 @@ version: '3.8'
 services:
   backend:
     build: ./backend
+    container_name: backend
+    restart: always
     entrypoint:
       - flask
       - run
@@ -15,6 +17,8 @@ services:
 
   frontend:
     build: ./frontend
+    container_name: frontend
     restart: always
+    volumes: ['./frontend:/frontend']
     ports:
-      - 3000:3000
+      - "3000:3000"
