@@ -1,6 +1,7 @@
-FROM node:12.18.3
-WORKDIR /frontend
-COPY package*.json ./
-RUN npm install
+FROM node:lts
+
+COPY package.json package-lock.json ./
+RUN npm ci
+
 COPY . .
 CMD ["npm", "run", "dev"]
