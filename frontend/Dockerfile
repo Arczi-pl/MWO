@@ -1,7 +1,7 @@
 FROM node:lts
 
-COPY package.json package-lock.json ./
+WORKDIR /src
+COPY package*.json ./
 RUN npm ci
 
-COPY . .
 CMD ["npm", "run", "dev"]

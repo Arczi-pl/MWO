@@ -35,7 +35,10 @@ services:
     build: ./frontend
     container_name: frontend
     restart: always
-    volumes: ['./frontend:/frontend']
+    volumes: 
+      - ./frontend:/src
+      - /src/node_modules
+      - /src/.next
     ports:
       - "3000:3000"
 
