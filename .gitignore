@@ -30,3 +30,5 @@ yarn-error.log*
 
 # BACKEND
 __pycache__
+_token
+_response.txt
