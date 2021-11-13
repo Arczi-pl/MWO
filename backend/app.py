@@ -10,6 +10,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 from api.login_api import secure_hello, register, login, load_user_from_request
+from api.product_api import create_product, remove_product, get_products
 
 @app.route('/')
 def hello_world():
