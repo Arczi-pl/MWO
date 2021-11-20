@@ -26,7 +26,7 @@ const Navbar = () => {
 
   return (
     <Wrapper top={`${top}px`}>
-      <Logo />
+      <Logo><img src='/logo.svg'></img></Logo>
       <Searchbar />
       <NavLinks />
     </Wrapper>
