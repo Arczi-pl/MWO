@@ -13,10 +13,12 @@ const Navbar = () => {
     function handleScroll(){
       var currentScrollPos = window.pageYOffset;
 
-      if (prevScrollPos > currentScrollPos) 
+      if (prevScrollPos > currentScrollPos)
         setTop(0)
       else
         setTop(-80)
+
+      prevScrollPos = currentScrollPos;
     }
 
     window.addEventListener('scroll', handleScroll)
