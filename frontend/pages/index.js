@@ -16,7 +16,7 @@ export default function Home(props) {
 }
 
 export async function getServerSideProps() {
-  
+  /*
   return {
     props: {
       products: [
@@ -74,15 +74,37 @@ export async function getServerSideProps() {
       ]
     }
   }
-
+  */
   //can't fetch from no API :'c
-  /*const { API_URL } = process.env
-  const res = await fetch(`${API_URL}/categories`)
+  const { API_URL } = process.env
+  const res = await fetch(`${API_URL}`)
   const data = await res.json()
 
   return {
     props: {
-      categories: data,
+      products: data,
+      categories: [
+        {
+          slug: "cat1",
+          name: "placeholder1"
+        },
+        {
+          slug: "cat2",
+          name: "placeholder2"
+        },
+        {
+          slug: "cat3",
+          name: "placeholder3"
+        },
+        {
+          slug: "cat4",
+          name: "placeholder4"
+        },
+        {
+          slug: "cat5",
+          name: "placeholder5"
+        }
+      ]
     }
-  }*/
+  }
 }

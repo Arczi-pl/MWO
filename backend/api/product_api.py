@@ -1,26 +1,18 @@
 import logging
-from flask import Flask, Response, request
+from flask import Flask, Response, request, jsonify
 from flask_login import login_required
 from database.products import add_product, remove_product, get_all
 from app import app, login_manager
+from bson import json_util
+import json
 
 LOGGER = logging.getLogger(__name__)
 
-@app.route('/create_product', methods=['PUT'])
+@app.route('/create_product', methods=['POST'])
 @login_required
 def create_product():
+    LOGGER.info(request.json)
     data = request.json
-    LOGGER.info(data)
-    # data = {
-    #         "id": "123",
-    #         "name": "New Product",
-    #         "price": "323",
-    #         "category": "Pet",
-    #         "properties": {
-    #             "length": "123mm",
-    #             "height": "325m"
-    #         }
-    #     }
     try:
         product = {}
         product['id'] = data['id']
@@ -53,4 +45,5 @@ def delete_product():
 
 @app.route('/get_products', methods=['GET'])
 def get_products():
-    return get_all()
+    sanitized = json.loads(json_util.dumps(get_all()))
+    return jsonify(sanitized)

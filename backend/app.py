@@ -16,16 +16,5 @@ from api.product_api import create_product, remove_product, get_products
 def hello_world():
     return 'Hello API!'
 
-
-@app.route('/add')
-def add():
-    add_one()
-    return 'Add one John'
-
-@app.route('/show')
-def show():
-    all_customers = get_all()
-    return str(all_customers)
-
 if __name__ == '__main__':
     app.run(debug = True, host = '0.0.0.0')
