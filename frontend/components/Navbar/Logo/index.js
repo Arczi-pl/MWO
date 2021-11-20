@@ -1,10 +1,13 @@
+import Link from 'next/link'
 import Wrapper from './Wrapper'
 
 const Logo = (props) => {
     return(
-        <Wrapper>
-            {props.children?props.children:"PLACEHOLDER"}
-        </Wrapper>
+        <Link href="/" passHref={true}>
+            <Wrapper>
+                {props.children}
+            </Wrapper>
+        </Link>
     )
 }
 
